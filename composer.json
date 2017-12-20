@@ -1,0 +1,24 @@
+{
+    "name": "tatiana5/newyear",
+    "type": "phpbb-extension",
+    "description": "New Year garland",
+    "homepage": "http://phpbbguru.net/community",
+    "version": "0.0.2",
+    "time": "2017-08-12",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Татьяна5",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "extra": {
+        "display-name": "New Year garland",
+        "soft-require": {
+		    "phpbb/phpbb": "3.2.*"
+        }
+    }
+}

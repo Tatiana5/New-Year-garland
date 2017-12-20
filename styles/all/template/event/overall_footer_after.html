@@ -1,0 +1,44 @@
+<script>
+	var garland_steps = [3, 0, 3, 0, 3, 3, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 0];
+
+	function garland(garland_img) {
+		var nums = $('#nums_1').html();
+
+		//garland_img.attr('class', 'garland_' + (nums % 4));
+		//$('#nums_1').html((nums % 4) + 1);
+		
+		garland_img.attr('class', 'garland_' + garland_steps[nums - 1]);
+		$('#nums_1').html((nums % 21) + 1);
+	}
+
+	function stop_garland() {
+		clearInterval(garland_interval);
+		$('#garland').attr('class', 'garland_3');
+		$('#nums_1').html('4');
+	}
+
+	function start_garland() {
+		var garland_img = $('#garland');
+		garland_interval = setInterval(function(){garland(garland_img)}, 550);
+	}
+
+	$('i.garland-on, i.garland-off').click(function() {
+		if ($(this).hasClass('garland-on')) {
+			stop_garland();
+			localStorage['garland'] = 'off';
+		} else {
+			start_garland();
+			localStorage['garland'] = 'on';
+		}
+
+		$(this).toggleClass('garland-on').toggleClass('garland-off');
+	});
+
+	$(document).ready(function() {
+		if ((typeof localStorage['garland'] === "undefined") || localStorage['garland'] == 'on') {
+			start_garland();
+		} else {
+			$('i.garland-on').toggleClass('garland-on').toggleClass('garland-off');
+		}
+	});
+</script>
