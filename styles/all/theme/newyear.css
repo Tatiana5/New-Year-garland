@@ -1,3 +1,8 @@
+/*body {
+	padding-top: 27px;
+	background-color: #1C1C1C;
+}*/
+
 #garland {
 	position: absolute;
 	top: 0;
@@ -6,7 +11,7 @@
 	height: 36px;
 	width: 100%;
 	overflow: hidden;
-	z-index:0;
+	z-index:1;
 	pointer-events: none;
 }
 
@@ -35,7 +40,7 @@
 	position: absolute;
 	font-size: 16px;
 	right: 10px;
-	top: 40px;
+	top: 90px;
 	cursor: pointer;
 }
 
@@ -43,3 +48,34 @@
 	color: #329C00;
 	text-shadow: 0 0 7px #8DFC46;
 }
+.elka {
+	position:relative;
+	margin: -12px 0 -50px 0;
+	height:90px;
+	width:auto;
+	background-repeat: repeat-x;
+	background-image: url('./images/elochka.png');
+}
+
+.christmas-ball {
+	position: absolute;
+	top: 17px;
+	background-image: url('./images/star.png');
+	border-radius: 50%;
+	width: 49px;
+	height: 49px;
+}
+
+.christmas-ball:hover {
+	cursor: pointer;
+}
+@media only screen and (max-width: 700px), only screen and (max-device-width: 700px) {
+
+.elka_responsive {
+	margin: -12px 0 20px 0;
+	}
+body {
+	padding-top: 10px;
+	}
+}
+

@@ -34,11 +34,75 @@
 		$(this).toggleClass('garland-on').toggleClass('garland-off');
 	});
 
+	function ball_animate()	{
+		$('.christmas-ball').remove();
+		var balls_count = Math.floor($(window).width() / 330);
+
+		if ($(window).width() % 330 > 130) {
+			balls_count += 1;
+		}
+
+		for (let i = 0; i < balls_count; i++)
+		{
+			$('.elka').append('<div class="christmas-ball" style="left: ' + (330*i+81) + 'px;"></div>');
+		}
+
+		$('.elka').attr('style', 'background-image: url("./ext/tatiana5/newyear/styles/all/theme/images/elochka2.png");');		
+	}
+
+	$(window).on('resize', ball_animate);
+
+	$('.elka').on('click', '.christmas-ball',  function() {
+		if (localStorage['garland'] == 'on')
+		{
+			old_next_position = 147;
+			start_ball_animation($(this), 3000, 147);
+		}
+	});
+
+	function start_ball_animation(ball, time, position) {
+		var pos_step = 12,
+			time_step = -70,
+			position_start = 147,
+			next_position = (position > 0) ? position : (position_start + position),
+			is_stop_animation = false;
+
+		ball.animate({
+			'background-position-x': next_position + 'px',
+		}, time, 'swing', function() {
+			time+= time_step;
+
+			if (position > 0)
+			{
+				position-= pos_step;
+				is_stop_animation = (Math.abs(next_position - position_start) > position_start/2 + 2*pos_step);
+			} else {
+				position += pos_step;
+				is_stop_animation = (Math.abs(next_position - position_start) < position_start/2 + 2*pos_step);
+			}
+
+			position = -position;
+
+			if (is_stop_animation) {
+				ball.stop();
+				next_position = (position > 0) ? (next_position + Math.round(3*pos_step/4)) : (next_position - Math.round(3*pos_step/4));
+				ball.animate({
+					'background-position-x': next_position + 'px'
+				}, 1000, 'swing');
+			} else {
+				start_ball_animation(ball, time, position);
+			}
+		});
+	}
+
 	$(document).ready(function() {
 		if ((typeof localStorage['garland'] === "undefined") || localStorage['garland'] == 'on') {
+			localStorage['garland'] = 'on'
 			start_garland();
 		} else {
 			$('i.garland-on').toggleClass('garland-on').toggleClass('garland-off');
 		}
+
+		ball_animate();
 	});
 </script>

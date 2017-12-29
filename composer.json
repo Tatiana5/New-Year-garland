@@ -3,12 +3,16 @@
     "type": "phpbb-extension",
     "description": "New Year garland",
     "homepage": "http://phpbbguru.net/community",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "time": "2017-08-12",
     "license": "GPL-2.0",
     "authors": [
         {
             "name": "Татьяна5",
+            "role": "Developer"
+        },
+        {
+            "name": "Warlock75",
             "role": "Developer"
         }
     ],
